@@ -20,7 +20,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('tasks.index');
     }
 
     /**
@@ -28,7 +28,15 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+
+        $request->user()->tasks()->create([
+            'name' => $request->name
+        ]);
+
+        return redirect()->route('tasks');
     }
 
     /**
