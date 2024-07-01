@@ -1,15 +1,20 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\TaskController;
+    use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/tasks', function () {
+    return view('tasks');
+})->middleware(['auth', 'verified'])->name('tasks');
+
+Route::get('post', function() {
+    return view('post.index');
+})->middleware(['auth', 'verified'])->name('post');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
