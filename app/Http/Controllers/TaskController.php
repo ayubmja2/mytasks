@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Console\View\Components\Task;
 use Illuminate\Http\Request;
+use \App\Models\Task;
 
 class TaskController extends Controller
 {
@@ -12,7 +12,10 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('tasks.index');
+        $tasks = Task::all();
+//        dd($tasks);
+
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
@@ -66,8 +69,10 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Task $task)
     {
-        //
+        $task->delete();
+
+        return redirect()->route('tasks');
     }
 }
