@@ -13,7 +13,6 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::all();
-//        dd($tasks);
 
         return view('tasks.index', compact('tasks'));
     }
@@ -53,20 +52,25 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit(Task $task)
     {
-        return view('tasks.edit');
+        return view('tasks.edit', compact('task'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Task $task)
     {
         $request->validate([
             'name' => 'required|string',
         ]);
-        $request->user()->tasks()->where('id', $id)->update([
+
+        if($request->user()->id !== $task->user_id){
+            return redirect()->route('tasks');
+        }
+
+        $task->update([
             'name' => $request->name
         ]);
 

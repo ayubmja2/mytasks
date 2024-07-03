@@ -5,8 +5,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                        <form class="space-y-6" action="{{route('tasks.store')}}" method="POST">
+                        <form class="space-y-6" action="{{route('tasks.update', $task->id)}}" method="POST">
                             @csrf
+                            @method('PATCH')
                             <div class="sm:mx-auto sm:w-full sm:max-w-sm">
                                 <h1 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                                     Edit Task</h1>
