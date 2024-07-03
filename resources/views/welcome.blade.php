@@ -11,7 +11,7 @@
             <header class="absolute inset-x-0 top-0 z-50">
                 <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
                     <div class="flex lg:flex-1">
-                        <a href="#" class="font-bold text-xl text-white/90">
+                        <a href="/" class="font-bold text-xl text-white/90">
                             <h1>MyTasks</h1>
                         </a>
                     </div>
@@ -23,13 +23,10 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="hidden lg:flex lg:gap-x-12 text-white/90">
-                        <a href="/tasks" class="text-sm font-semibold leading-6">Tasks</a>
-                        <a href="#" class="text-sm font-semibold leading-6">Post</a>
-                    </div>
+
                     <div class="hidden lg:flex lg:flex-1 lg:justify-end text-white/90">
-                        <a href="#" class="text-sm font-semibold leading-6">Log in </a>
-                        <a href="#" class="text-sm font-semibold leading-6 pl-4">Register </a>
+                        <a href="/login" class="text-sm font-semibold leading-6">Log in </a>
+                        <a href="/register" class="text-sm font-semibold leading-6 pl-4">Register </a>
                     </div>
                 </nav>
             </header>
