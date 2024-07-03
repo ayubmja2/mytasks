@@ -45,17 +45,17 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Task $task)
     {
-        //
+        return view('tasks.show', compact('task'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
-        //
+        return view('tasks.edit');
     }
 
     /**
@@ -63,7 +63,14 @@ class TaskController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+        $request->user()->tasks()->where('id', $id)->update([
+            'name' => $request->name
+        ]);
+
+        return redirect()->route('tasks');
     }
 
     /**
